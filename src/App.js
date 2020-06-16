@@ -26,23 +26,20 @@ class App extends Component {
             <div>Лимит достигнут, подождите</div>
         }
         {
-          console.log(this.state.totalCount)
-        }
-        {
           this.state.isLoaded ?
             <div>
-              <ListRepos json={this.state.data} />
+              <ListRepos data={this.state.data} />
               {
                 localStorage.getItem("limit") * 1 > 3 ?
                   <PaginationList pageChangedFn={this.pageChanged} currentPage={this.state.currentPage} totalCount={this.state.totalCount}></PaginationList> :
                   <div>Лимит достигнут, подождите</div>
               }
-
             </div> : <Loader></Loader>
         }
       </div>
     );
   }
+
   onInputChange = async (search) => {
     if (localStorage.getItem("limit") * 1 > 3) {
       if (this.state.didMount) {
@@ -50,10 +47,12 @@ class App extends Component {
         localStorage.setItem("currentPage", 1)
         this.githubQuerry();
       }
+    } else {
+      this.setState({ ...this.state, didMount: false, isLoaded: false })
     }
   }
   newLimit = async () => {
-    await this.setState({ ...this.state, didMount: false, isLoaded: false })
+    await this.setState({ ...this.state, didMount: false, isLoaded: false, currentPage: localStorage.getItem("currentPage") * 1, search: localStorage.getItem("search") })
     localStorage.setItem("limit", 10)
     this.githubQuerry();
     setTimeout(() => {
@@ -70,6 +69,8 @@ class App extends Component {
       setTimeout(() => {
         this.setState({ ...this.state, didMount: true })
       }, 3000)
+    } else {
+      this.setState({ ...this.state, didMount: false, isLoaded: false })
     }
     setInterval(this.newLimit, 65000);
   }
@@ -94,6 +95,8 @@ class App extends Component {
         await this.setState({ ...this.state, isLoaded: false, currentPage: newPage })
         this.githubQuerry();
       }
+    } else {
+      this.setState({ ...this.state, didMount: false, isLoaded: false })
     }
   }
 }
