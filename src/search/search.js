@@ -21,7 +21,7 @@ class search extends React.Component {
     render() {
         return (
             <form>
-                <input type="text" onChange={e => { this.onInputChange(e) }} placeholder="search" value={localStorage.getItem("search")}></input>
+                <input type="text" onChange={e => { this.onInputChange(e) }} placeholder="search" value={this.state.search}></input>
             </form>
         )
     }

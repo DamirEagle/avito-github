@@ -3,7 +3,6 @@ import { arrayOfPages } from '../constants';
 import PaginationItem from '../paginationItem/paginationItem';
 
 class paginationList extends Component {
-    newArrayOfPages = []
 
     render() {
         return (
@@ -21,11 +20,12 @@ class paginationList extends Component {
         this.props.pageChangedFn(newPage)
     }
     newArrayOfPagesMaker = (totalCount) => {
+        let newArrayOfPages = []
         for (let i = 1; i <= Math.ceil(totalCount / 10); i++) {
-            this.newArrayOfPages.push(i);
+            newArrayOfPages.push(i);
         }
         return (
-            this.newArrayOfPages.map((num, index) => <PaginationItem pageChangedFn={this.pageChaged} key={index} num={num} active={this.props.currentPage === num ? true : false} />)
+            newArrayOfPages.map((num, index) => <PaginationItem pageChangedFn={this.pageChaged} key={index} num={num} active={this.props.currentPage === num ? true : false} />)
         )
     }
 }

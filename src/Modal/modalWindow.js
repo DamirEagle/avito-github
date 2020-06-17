@@ -19,7 +19,12 @@ class modalWindow extends Component {
                     {<div onClick={() => this.closeModal()}>{this.props.data.languages.JavaScript}</div>}
                     <div>------------</div>
                     {this.props.data.description}
-                    {this.props.data.contributors.map((contributor, index) => <div key={index}>{contributor.login}</div>)}
+                    {//this.props.data.contributors.map((contributor, index) => <div key={index}>{contributor.login}</div>)}
+                        console.log(this.props.data.contributors)
+                    }
+                    <div>
+                        <button onClick={() => this.closeModal()}>close</button>
+                    </div>
                 </div>
 
             </div>
