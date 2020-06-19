@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { arrayOfPages } from "../constants";
 import PaginationItem from "../paginationItem/paginationItem";
+import itemStyles from "../paginationItem/paginationItem.module.css";
+import s from "./paginationList.module.css";
 
 class paginationList extends Component {
   render() {
     return (
-      <div>
+      <div className={s.listContainer}>
         <span
           onClick={() => {
             this.changedToTheLeft();
           }}
+          className={`${itemStyles.pagination}`}
         >
           &lt;
         </span>
@@ -27,6 +30,7 @@ class paginationList extends Component {
           onClick={() => {
             this.changedToTheRight(this.props.totalCount);
           }}
+          className={`${itemStyles.pagination}`}
         >
           &gt;
         </span>

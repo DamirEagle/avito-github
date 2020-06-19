@@ -1,0 +1,9 @@
+.listReposContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  min-width: 460;
+  margin: 5px;
+}

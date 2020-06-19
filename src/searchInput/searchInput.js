@@ -1,4 +1,6 @@
 import React from "react";
+import { SEARCH } from "../constants";
+import "./searchInput.css";
 
 class searchInput extends React.Component {
   constructor() {
@@ -9,10 +11,10 @@ class searchInput extends React.Component {
     };
   }
   async componentDidMount() {
-    if (this.state.search !== localStorage.getItem("search")) {
+    if (this.state.search !== localStorage.getItem(SEARCH)) {
       await this.setState({
         ...this.state,
-        search: localStorage.getItem("search"),
+        search: localStorage.getItem(SEARCH),
       });
       if (!this.state.timerActivated) {
         await this.setState({ ...this.state, timerActivated: true });
@@ -22,7 +24,7 @@ class searchInput extends React.Component {
   }
   render() {
     return (
-      <form>
+      <form className="searchInputContainer">
         <input
           type="text"
           onChange={(e) => {
@@ -31,12 +33,13 @@ class searchInput extends React.Component {
           placeholder="search"
           value={this.state.search}
         ></input>
+        <span className="bar"></span>
       </form>
     );
   }
 
   onInputChange = async (e) => {
-    localStorage.setItem("search", e.target.value);
+    localStorage.setItem(SEARCH, e.target.value);
     await this.setState({ ...this.state, search: e.target.value });
     if (!this.state.timerActivated) {
       await this.setState({ ...this.state, timerActivated: true });
