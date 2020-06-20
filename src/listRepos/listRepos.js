@@ -6,7 +6,7 @@ import s from "./listRepos.module.css";
 
 class listRepos extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       index: 0,
       name: "",
@@ -14,6 +14,7 @@ class listRepos extends Component {
       updated_at: "",
       avatar_url: "",
       login: "",
+      html_url: "",
       languages_url: "",
       description: "",
       contributors_url: "",
@@ -33,6 +34,19 @@ class listRepos extends Component {
         )}`
       );
       console.log(localStorage.getItem(LIMIT_MODAL));
+      const newDate = new Date();
+      const settedDate = new Date(localStorage.getItem(DATE_MODAL) * 1000);
+      if (newDate.getTime() > settedDate.getTime())
+        localStorage.setItem(LIMIT_MODAL, 60);
+      else {
+        let timeOut;
+        if (settedDate.getMinutes() > newDate.getMinutes())
+          timeOut = settedDate.getMinutes() - newDate.getMinutes();
+        else timeOut = 60 - newDate.getMinutes() + settedDate.getMinutes();
+        setTimeout(() => {
+          localStorage.setItem(LIMIT_MODAL, 60);
+        }, timeOut * 1000);
+      }
     }
   };
   closeModal = () => {
@@ -47,6 +61,7 @@ class listRepos extends Component {
       updated_at: this.props.data[index].updated_at,
       avatar_url: this.props.data[index].owner.avatar_url,
       login: this.props.data[index].owner.login,
+      html_url: this.props.data[index].owner.html_url,
       languages_url: this.props.data[index].languages_url,
       description: this.props.data[index].description,
       contributors_url: `${this.props.data[index].contributors_url}?page=1&per_page=10`,
