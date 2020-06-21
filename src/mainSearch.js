@@ -71,12 +71,10 @@ class App extends Component {
         search,
       });
       localStorage.setItem(CURRANT_PAGE, 1);
-      console.log("сработал opInputChange");
       this.githubQuerry();
     }
   };
   newLimit = async () => {
-    console.log("сработал newLimit");
     await this.setState({ ...this.state, didMount: false });
     localStorage.setItem(LIMIT_APP, 10);
     this.setState({ ...this.state });
@@ -119,7 +117,6 @@ class App extends Component {
               LIMIT_APP,
               String(res.headers.get(X_RATELIMIT_REMAINING))
             );
-            console.log(res.headers.get(X_RATELIMIT_REMAINING));
             return res.json();
           })
           .then(async (data) => {
@@ -130,10 +127,8 @@ class App extends Component {
               totalCount: data.total_count,
             });
           });
-        console.log("сработал githubQuerry");
       } else
         setTimeout(() => {
-          console.log("сработал Timeout в githubQuerry");
           localStorage.setItem(LIMIT_APP, 10);
           this.githubQuerry();
         }, 60000);
@@ -149,7 +144,6 @@ class App extends Component {
         isLoaded: false,
         currentPage: newPage,
       });
-      console.log("сработал pageChanged");
       this.githubQuerry();
     }
   };

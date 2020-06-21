@@ -33,7 +33,6 @@ class listRepos extends Component {
           localStorage.getItem(DATE_MODAL) * 1000
         )}`
       );
-      console.log(localStorage.getItem(LIMIT_MODAL));
       const newDate = new Date();
       const settedDate = new Date(localStorage.getItem(DATE_MODAL) * 1000);
       if (newDate.getTime() > settedDate.getTime())

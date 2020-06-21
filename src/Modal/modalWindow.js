@@ -3,7 +3,6 @@ import s from "./modal.module.css";
 
 class modalWindow extends Component {
   closeModal = () => {
-    console.log("happened");
     this.props.closeModalFn();
   };
 
@@ -46,7 +45,6 @@ class modalWindow extends Component {
                   <ol>
                     {Object.keys(this.props.data.languages).map(
                       (lang, index) => {
-                        console.log("----" + { lang });
                         return (
                           <li key={index} className={s.lang}>
                             {lang}

@@ -28,7 +28,6 @@ class modalWrapper extends Component {
     const contributors = Axios.get(this.props.modalData.contributors_url);
     Axios.all([languages, contributors]).then(
       Axios.spread((...allData) => {
-        console.log(`--------${allData}`);
         this.setState({
           name: this.props.modalData.name,
           stargazers_count: this.props.modalData.stargazers_count,
@@ -40,7 +39,6 @@ class modalWrapper extends Component {
           description: this.props.modalData.description,
           contributors: allData[1].data,
         });
-        console.log(allData[0].headers[X_RATELIMIT_REMAINING]);
         const latestData =
           allData[0].headers[X_RATELIMIT_REMAINING] >
           allData[1].headers[X_RATELIMIT_REMAINING]
