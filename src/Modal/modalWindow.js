@@ -43,14 +43,18 @@ class modalWindow extends Component {
               <div className={s.add_data}>
                 <div className={s.data}>
                   <h4>languages</h4>
-                  {Object.keys(this.props.data.languages).map((lang, index) => {
-                    console.log("----" + { lang });
-                    return (
-                      <p key={index} className={s.lang}>
-                        {lang}
-                      </p>
-                    );
-                  })}
+                  <ol>
+                    {Object.keys(this.props.data.languages).map(
+                      (lang, index) => {
+                        console.log("----" + { lang });
+                        return (
+                          <li key={index} className={s.lang}>
+                            {lang}
+                          </li>
+                        );
+                      }
+                    )}
+                  </ol>
                 </div>
                 {this.props.data.description !== null ? (
                   <div className={s.data}>
@@ -61,26 +65,25 @@ class modalWindow extends Component {
                   <div></div>
                 )}
                 {this.props.data.contributors.length > 0 ? (
-                  <div className="data">
+                  <div className={s.data}>
                     <h4>Contributors</h4>
-                    {this.props.data.contributors
-                      .slice(
-                        0,
-                        this.props.data.contributors.length >= 10
-                          ? 10
-                          : this.props.data.contributors.length
-                      )
-                      .map((contributor, index) => (
-                        <a
-                          href={contributor.html_url}
-                          key={index}
-                          className={s.contributorLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {contributor.login}
-                        </a>
-                      ))}
+                    <ol>
+                      {this.props.data.contributors.map(
+                        (contributor, index) => (
+                          <li>
+                            <a
+                              href={contributor.html_url}
+                              key={index}
+                              className={s.contributorLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <div>{contributor.login}</div>
+                            </a>
+                          </li>
+                        )
+                      )}
+                    </ol>
                   </div>
                 ) : (
                   <div></div>

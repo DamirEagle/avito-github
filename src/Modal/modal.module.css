@@ -37,11 +37,7 @@
   border-radius: 5px;
   margin-bottom: 10px;
 }
-.a {
-  text-decoration: none;
-  font-size: 20px;
-  color: black;
-}
+
 .modal_content .left a {
   margin-bottom: 10px;
   text-decoration: none;
@@ -78,7 +74,6 @@
 }
 .modal_content .right .additional_info .add_data .data a {
   text-decoration: none;
-  font-size: 20px;
   color: black;
 }
 .modal_content .right .info_data .data h4 {
@@ -91,15 +86,20 @@
   margin-bottom: 10px;
   color: #919aa3;
 }
+.modal_content .right .additional_info .add_data .data ol {
+  padding-left: 20px;
+}
 
 /* The Close Button */
 .close {
   color: black;
+  background-color: #df4701;
   float: right;
   font-size: 15px;
   font-weight: bold;
   margin-top: 10px;
   margin-right: 10px;
+  border: none;
 }
 
 .close:hover,

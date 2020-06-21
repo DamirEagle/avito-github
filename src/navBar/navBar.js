@@ -8,7 +8,7 @@ class navBar extends Component {
       <nav className={s.container}>
         <div className={s.item}>
           <NavLink to="/">
-            <BsSearch color="white" size="1rem"></BsSearch>
+            <BsSearch color="white" size="1.30rem"></BsSearch>
           </NavLink>
         </div>
         <div className={s.item}>

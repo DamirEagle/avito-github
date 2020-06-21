@@ -4,12 +4,12 @@ import ListRepos from "./listRepos/listRepos";
 import SearchInput from "./searchInput/searchInput";
 import Loader from "./Loader/Loader";
 import {
-  AVITO,
+  MOST_STARRED,
   SEARCH,
   LIMIT_APP,
   CURRANT_PAGE,
   PER_PAGE,
-  X_RATELIMIT_REMAIING,
+  X_RATELIMIT_REMAINING,
 } from "./constants";
 import PaginationList from "./paginationList/paginationList";
 
@@ -38,15 +38,19 @@ class App extends Component {
           <div>Лимит достигнут, подождите</div>
         )}
         {this.state.isLoaded ? (
-          <div className="secondContainer">
+          <div className="listPaginationContainer">
             <ListRepos data={this.state.data} />
-            {localStorage.getItem(LIMIT_APP) * 1 > 1 &&
-            this.state.totalCount > 10 ? (
-              <PaginationList
-                pageChangedFn={this.pageChanged}
-                currentPage={this.state.currentPage}
-                totalCount={this.state.totalCount}
-              ></PaginationList>
+            {localStorage.getItem(LIMIT_APP) * 1 > 1 ? (
+              this.state.totalCount > 10 &&
+              localStorage.getItem(SEARCH) !== "" ? (
+                <PaginationList
+                  pageChangedFn={this.pageChanged}
+                  currentPage={this.state.currentPage}
+                  totalCount={this.state.totalCount}
+                ></PaginationList>
+              ) : (
+                <div></div>
+              )
             ) : (
               <div>Лимит достигнут, подождите</div>
             )}
@@ -72,8 +76,6 @@ class App extends Component {
     }
   };
   newLimit = async () => {
-    if (!this.state.isLoaded) {
-    }
     console.log("сработал newLimit");
     await this.setState({ ...this.state, didMount: false });
     localStorage.setItem(LIMIT_APP, 10);
@@ -107,7 +109,7 @@ class App extends Component {
       if (localStorage.getItem(LIMIT_APP) * 1 > 1) {
         fetch(
           `https://api.github.com/search/repositories?q=${
-            this.state.search ? this.state.search : AVITO
+            this.state.search ? this.state.search : MOST_STARRED
           }&page=${
             this.state.currentPage
           }&per_page=${PER_PAGE}&sort=stars&order=desc`
@@ -115,9 +117,9 @@ class App extends Component {
           .then((res) => {
             localStorage.setItem(
               LIMIT_APP,
-              String(res.headers.get(X_RATELIMIT_REMAIING))
+              String(res.headers.get(X_RATELIMIT_REMAINING))
             );
-            console.log(res.headers.get(X_RATELIMIT_REMAIING));
+            console.log(res.headers.get(X_RATELIMIT_REMAINING));
             return res.json();
           })
           .then(async (data) => {

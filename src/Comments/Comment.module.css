@@ -1,0 +1,24 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.intro p {
+  text-indent: 1.5em;
+  width: 500px;
+}
+.articles {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.articles p {
+  width: 400px;
+  text-indent: 1.5em;
+}

@@ -24,7 +24,7 @@ class searchInput extends React.Component {
   }
   render() {
     return (
-      <form className="searchInputContainer">
+      <form className="container">
         <input
           type="text"
           onChange={(e) => {

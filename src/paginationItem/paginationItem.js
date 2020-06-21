@@ -4,9 +4,7 @@ class paginationItem extends Component {
   render() {
     return (
       <span
-        className={`${s.pagination} ${
-          this.props.active ? ` ${s.active}` : ""
-        } ${s.itemConteiner}`}
+        className={`${s.pagination} ${this.props.active ? ` ${s.active}` : ""}`}
         onClick={() => {
           this.pageChanged(this.props.num);
         }}

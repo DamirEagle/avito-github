@@ -1,4 +1,4 @@
-.searchInputContainer {
+.container {
   margin: 5px;
 }
 input {
@@ -13,7 +13,6 @@ input:focus {
   outline: none;
 }
 
-/* BOTTOM BARS ================================= */
 .bar {
   position: relative;
   display: block;

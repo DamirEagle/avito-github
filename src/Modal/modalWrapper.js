@@ -4,7 +4,7 @@ import Axios from "axios";
 import {
   LIMIT_MODAL,
   DATE_MODAL,
-  X_RATELIMIT_REMAIING,
+  X_RATELIMIT_REMAINING,
   X_RATELIMIT_RESET,
 } from "../constants";
 
@@ -40,15 +40,15 @@ class modalWrapper extends Component {
           description: this.props.modalData.description,
           contributors: allData[1].data,
         });
-        console.log(allData[0].headers["x-ratelimit-reset"]);
+        console.log(allData[0].headers[X_RATELIMIT_REMAINING]);
         const latestData =
-          allData[0].headers[X_RATELIMIT_REMAIING] >
-          allData[1].headers[X_RATELIMIT_REMAIING]
+          allData[0].headers[X_RATELIMIT_REMAINING] >
+          allData[1].headers[X_RATELIMIT_REMAINING]
             ? allData[1]
             : allData[0];
         localStorage.setItem(
           LIMIT_MODAL,
-          latestData.headers[X_RATELIMIT_REMAIING]
+          latestData.headers[X_RATELIMIT_REMAINING]
         );
         localStorage.setItem(DATE_MODAL, latestData.headers[X_RATELIMIT_RESET]);
       })

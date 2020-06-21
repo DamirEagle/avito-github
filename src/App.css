@@ -1,7 +1,7 @@
 .mainContainer {
   display: flex;
-  flex: auto;
   flex-direction: column;
+  flex: auto;
   align-items: center;
   justify-content: center;
   border-radius: 5%;
@@ -10,7 +10,7 @@
   max-width: 700px;
   margin: 2px auto;
 }
-.secondContainer {
+.listPaginationContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
