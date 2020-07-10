@@ -34,7 +34,10 @@ class modalWindow extends Component {
                 </div>
                 <div className={s.data}>
                   <h4>Update</h4>
-                  <p>{this.props.data.updated_at}</p>
+                  <p>{`${this.props.data.updated_at.slice(
+                    0,
+                    10
+                  )} ${this.props.data.updated_at.slice(11, 19)}`}</p>
                 </div>
               </div>
             </div>

@@ -19,7 +19,10 @@ class itemRepos extends Component {
           {this.props.stargazers_count}
           <BsFillStarFill color="black" size="1rem"></BsFillStarFill>
         </span>
-        <span className={s.update}>{this.props.updated_at}</span>
+        <span className={s.update}>{`${this.props.updated_at.slice(
+          0,
+          10
+        )} ${this.props.updated_at.slice(11, 19)}`}</span>
         <a
           href={this.props.html_url}
           className={s.github}

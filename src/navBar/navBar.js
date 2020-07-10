@@ -16,9 +16,6 @@ class navBar extends Component {
             Profile
           </NavLink>
         </div>
-        <div className={s.item}>
-          <NavLink to="/comments">Comments</NavLink>
-        </div>
       </nav>
     );
   }

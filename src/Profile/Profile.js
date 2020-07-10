@@ -23,25 +23,15 @@ class Profile extends Component {
             </div>
             <div className={s.info_data}>
               <div className={s.data}>
-                <h4>Изученные языки</h4>
-                <p>Pascal, С/C++, Java, JS</p>
+                <h4>Факультет</h4>
+                <p>Прикладная математика и информационные технологии</p>
               </div>
               <div className={s.data}>
-                <h4>Front-end технологии</h4>
-                <p>React, Redux, HTML5, CSS3</p>
+                <h4>Направление</h4>
+                <p>Фундаментальная информатика и информационные технологии</p>
               </div>
             </div>
-            <div className={s.info_data}>
-              <div className={s.data}>
-                <h4>Базы Данных</h4>
-                <p>MS SQL server, SQLite</p>
-              </div>
 
-              <div className={s.data}>
-                <h4>ОС</h4>
-                <p>Windows, Linux mint</p>
-              </div>
-            </div>
             <div className={s.info_data}>
               <div className={s.data}>
                 <h4>Email</h4>
